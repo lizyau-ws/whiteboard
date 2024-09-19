@@ -1,0 +1,352 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F2F2F2;
+}
+
+#whiteboard {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.flip-card {
+    width: 180px;
+    height: 320px !important;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.flip-card-front {
+    background-color: #867AFF;
+    color: white;
+}
+
+.flip-card-back {
+    background-color: #E5E2FF;
+    color: black;
+    transform: rotateY(180deg);
+}
+
+.flip-card textarea {
+    width: 100%;
+    height: 120px;
+    resize: none;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.flip-card-front textarea {
+    color: white;
+}
+
+.flip-card-front textarea::placeholder {
+    color: #6C7173;
+}
+
+.flip-card-back textarea {
+    color: black;
+}
+
+.flip-card textarea:focus {
+    outline: none;
+}
+
+.flip-btn {
+    width: 80%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    background-color: black;
+    color: white;
+}
+
+.flip-btn:hover {
+    opacity: 0.9;
+}
+
+/* Transition for smooth animation */
+.flip-card-inner {
+    transition: transform 0.3s ease;
+}
+
+.sticky-note {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.sticky-note {
+    width: 200px;
+    height: 200px;
+    background-color: #fff9b1;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.sticky-note textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    resize: none;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+}
+
+
+#toolbar {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border-radius: 50px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 10px;
+}
+
+.tool-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+}
+
+.tool-btn:hover, .tool-btn.selected {
+    background-color: #f0f0f0;
+    color: #007bff;
+}
+
+.tool-tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.tool-btn:hover .tool-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.sticky-note {
+    width: 200px;
+    height: 200px;
+    background-color: #fff9b1;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.sticky-note textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    resize: none;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.polling {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    width: 250px;
+}
+
+.polling h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.polling input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.polling .options {
+    margin-bottom: 15px;
+}
+
+.polling .option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.polling .option input[type="radio"] {
+    margin-right: 10px;
+}
+
+.polling .option span {
+    flex-grow: 1;
+}
+
+.polling button {
+    width: 100%;
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.polling button:hover {
+    background-color: #0056b3;
+}
+
+.polling button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.widget {
+    position: absolute;
+    cursor: move;
+}
+
+.flip-card {
+    width: 200px;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.selection-frame {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.widget.selected .selection-frame {
+    opacity: 1;
+}
+
+/* .wordcloud {
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    overflow: hidden;
+}
+
+.wordcloud-setup input, .wordcloud-setup button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.wordcloud-display h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.word-container {
+    text-align: center;
+}
+
+.word-input-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.word-input-modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+.word-input-modal input, .word-input-modal button {
+    margin-bottom: 10px;
+    padding: 8px;
+} */
